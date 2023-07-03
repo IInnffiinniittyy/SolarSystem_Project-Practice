@@ -1,0 +1,71 @@
+body{
+    margin: 0;
+    height: 100vh; /*viewport height:  is used to define sizes and dimensions relative to the height of the viewport (the visible area of a web page). It is commonly used for responsive design to ensure elements or layouts adapt and scale properly based on the height of the viewport, providing a consistent user experience across different devices and screen sizes.*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    overflow: hidden; /*hides any content that exceeds the boundaries of its container, 
+    preventing it from being visible outside of the defined area.*/
+}
+.container{
+    font-size: 10px;
+    width: 40em; /*em is used to define sizes and dimensions relative to the font size of an element's parent or the nearest ancestor with a defined font size. It allows for more flexible and scalable designs, especially when it comes to typography and responsive layouts.*/
+    height: 40em;
+    position: relative;/*it is used to create a positioning context for an element, enabling precise placement using the top, bottom, left, and right properties, while still maintaining the element's position within the document flow.*/
+}
+.sun{
+    position: absolute; /*used to precisely position an element relative to its nearest positioned ancestor or the document's initial containing block, providing more control over its placement and allowing it to overlap other elements.*/
+    top: 15em;
+    left: 15em;
+    width: 10em;
+    height: 10em;
+    background-color: yellow;
+    border-radius: 50%;
+    box-shadow: 0 0 3em white; /*pplies a white shadow effect to the element, positioned with no horizontal or vertical offset (0), a blur radius of 3em, resulting in a soft and diffused shadow appearance.*/
+}
+.earth, .moon{
+    position: absolute;
+    border-style: solid;
+    border-color: white transparent transparent transparent;/*sets the border color of an element, with the top border being white and the other three borders (right, bottom, and left) being transparent.*/
+    border-width: 0.1em 0.1em 0 0;
+    border-radius: 50%;
+}
+.earth{
+    top: 5em;
+    left: 5em;
+    width: 30em;
+    height: 30em;
+    animation: orbit 36.5s linear infinite; /*an animation named "orbit" that lasts for 36.5 seconds, follows a linear timing function, and repeats infinitely.*/
+}
+.moon{
+    top: 0;
+    right: 0;
+    width: 8em;
+    height: 8em;
+    animation: orbit 2.7s linear infinite;
+}
+.earth::before, .moon::before{
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+}
+.earth::before{
+    top: 2.8em;
+    right: 2.8em;
+    width: 3em;
+    height: 3em;
+    background-color: aqua;
+}
+.moon::before{
+    top: 0.8em;
+    right: 0.2em;
+    width: 1.2em;
+    height: 1.2em;
+    background-color: silver;
+}
+@keyframes orbit {
+    to{
+        transform: rotate(360deg);
+    }    
+}/*The animation is named "orbit" and it specifies a rotation transform. The animation starts from the initial state and animates to the final state where the element is rotated 360 degrees clockwise*/
